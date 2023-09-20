@@ -6,5 +6,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
 @JacksonXmlRootElement(localName = "NAXML-POSJournls")
 data class POSJournal(
     @field:JacksonXmlProperty(localName = "TransmissionHeader")
-    val transmissionHeader: TransmissionHeader
+    val transmissionHeader: TransmissionHeader,
+
+    @field:JacksonXmlProperty(localName = "JournalReport")
+    val journalReport: JournalReport
 )

@@ -10,5 +10,8 @@ data class TransmissionHeader(
     val vendorName: String,
 
     @field:JacksonXmlProperty(localName = "VendorModelVersion")
-    val vendorModelVersion: String
+    val vendorModelVersion: String,
+
+    @field:JacksonXmlProperty(localName = "TransmissionHeaderExtension")
+    val transmissionHeaderExtension: TransmissionHeaderExtension
 )
