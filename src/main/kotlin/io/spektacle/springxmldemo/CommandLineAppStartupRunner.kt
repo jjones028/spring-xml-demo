@@ -9,12 +9,19 @@ import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.spektacle.springxmldemo.models.POSJournal
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
+import org.springframework.kafka.core.KafkaTemplate
+import org.springframework.kafka.support.KafkaHeaders
+import org.springframework.messaging.Message
+import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Component
 import org.springframework.util.ResourceUtils
 
 
 @Component
-class CommandLineAppStartupRunner : CommandLineRunner {
+class CommandLineAppStartupRunner(
+    private val kafkaTemplate: KafkaTemplate<String, Any>
+) : CommandLineRunner {
+
     @Throws(Exception::class)
     override fun run(vararg args: String) {
         logger.info(
@@ -37,6 +44,12 @@ class CommandLineAppStartupRunner : CommandLineRunner {
             ResourceUtils.getFile("classpath:NAXML-POSJournal_2023-08-09_2023-08-10T06.16.00.086_1of1.xml"),
             POSJournal::class.java
         )
+
+        val message: Message<POSJournal> = MessageBuilder
+            .withPayload(posJournal)
+            .setHeader(KafkaHeaders.TOPIC, "business-day")
+            .build()
+        kafkaTemplate.send(message)
         println(posJournal)
     }
 
