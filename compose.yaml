@@ -37,7 +37,7 @@ services:
     container_name: kafka-ui
     image: provectuslabs/kafka-ui:latest
     ports:
-      - 8080:8080
+      - 8082:8080
     depends_on:
       - kafka
     environment:
@@ -47,3 +47,12 @@ services:
       DYNAMIC_CONFIG_ENABLED: 'true'  # not necessary, added for tests
       KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED: 'true'
       KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED: 'true'
+
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - /u/ssc/pos/346/exports:/home/346/exports
+      - /u/ssc/pos/205/exports:/home/205/exports
+      - ./users.conf:/etc/sftp/users.conf:ro
+    ports:
+      - "2220:22"
