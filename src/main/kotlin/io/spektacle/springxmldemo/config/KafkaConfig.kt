@@ -22,4 +22,7 @@ class KafkaConfig {
 
     @Bean
     fun businessDay(): NewTopic = NewTopic("business-day", 1, 1.toShort())
+
+    @Bean
+    fun businessDayEvents(): NewTopic = NewTopic("business-day-events", 400, 1.toShort())
 }
