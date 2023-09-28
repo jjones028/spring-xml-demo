@@ -1,6 +1,6 @@
 package io.spektacle.springxmldemo.config
 
-import io.spektacle.springxmldemo.serializers.POSJournalSerializer
+import io.spektacle.springxmldemo.serializers.FileSerializer
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.beans.factory.annotation.Value
@@ -19,7 +19,7 @@ class KafkaProducerConfig(
     fun producerFactory(): ProducerFactory<String, Any> = DefaultKafkaProducerFactory(mutableMapOf<String, Any>(
         ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to servers,
         ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
-        ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to POSJournalSerializer::class.java
+        ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to FileSerializer::class.java
     ))
 
     @Bean
