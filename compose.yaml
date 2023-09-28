@@ -51,8 +51,8 @@ services:
   sftp:
     image: atmoz/sftp
     volumes:
-      - /u/ssc/pos/346/exports:/home/346/exports
-      - /u/ssc/pos/205/exports:/home/205/exports
+      - /mnt/c/u/ssc/pos/346/exports:/home/346/exports
+      - /mnt/c/u/ssc/pos/205/exports:/home/205/exports
       - ./users.conf:/etc/sftp/users.conf:ro
     ports:
       - "2220:22"
