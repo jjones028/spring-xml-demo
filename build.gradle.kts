@@ -29,6 +29,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-integration")
     implementation("org.springframework.integration:spring-integration-file")
     implementation("org.springframework.integration:spring-integration-kafka")
+    implementation("org.springframework.integration:spring-integration-sftp")
+    implementation("net.i2p.crypto:eddsa:0.3.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

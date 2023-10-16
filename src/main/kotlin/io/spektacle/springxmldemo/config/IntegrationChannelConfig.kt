@@ -11,6 +11,9 @@ class IntegrationChannelConfig {
     fun xml() = MessageChannels.direct().`object`
 
     @Bean
+    fun event() = MessageChannels.direct().`object`
+
+    @Bean
     fun errors() =MessageChannels.direct().`object`
 
 }
